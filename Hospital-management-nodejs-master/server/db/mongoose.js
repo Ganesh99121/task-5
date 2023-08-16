@@ -2,7 +2,14 @@ var mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
-// Change the database with yours
-mongoose.connect("mongodb+srv://ganeshmmarolix:GHWKf3Amlwl822fr@cluster0.ykazdov.mongodb.net/test?retryWrites=true&w=majority",
-{ useNewUrlParser: true, useUnifiedTopology: true } // Added options);
+// Change the database connection URL with yours
+mongoose.connect('mongodb+srv://ganeshmmarolix:GHWKf3Amlwl822fr@cluster0.ykazdov.mongodb.net/?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => {
+  console.log('Connected to MongoDB successfully!');
+}).catch((error) => {
+  console.error('Error connecting to MongoDB:', error.message);
+});
+
 module.exports = { mongoose };
